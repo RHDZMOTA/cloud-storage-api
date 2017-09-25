@@ -1,10 +1,18 @@
-import json
 import os
+import json
+from util.client_secret import create_client_secret
 
 # Load client secret dictionary
-with open('settings/client_secret.json') as secret_content:
-    client_secrets_map = json.load(secret_content)
+def get_client_secret_json():
+    if not os.path.isfile("settings/client_secret.json"):
+        with open('settings/client_secret.json.example') as secret_content:
+            client_secrets_map_example = json.load(secret_content)
+        create_client_secret(client_secrets_map_example)
+    with open('settings/client_secret.json') as secret_content:
+        client_secrets_map = json.load(secret_content)
+    return client_secrets_map
 
+client_secrets_map = get_client_secret_json()
 DEBUG = True
 
 
