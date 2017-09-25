@@ -11,6 +11,7 @@ mod_temporal_link = Blueprint('temporal-link', __name__, url_prefix='/temporal-l
 
 @mod_temporal_link.route('/', methods=['GET', 'POST'])
 def get_index():
+    print("SHOW INDEX")
     return render_template('temporal_link/index.html')
 
 
