@@ -13,10 +13,10 @@ def get_index():
     return "hey"#render_template('cloud-vision/index.html')
 
 
-@mod_cloud_vision.route('/google-dropbox-ocr', methods=['GET'])
+@mod_cloud_vision.route('/google-dropbox-ocr', methods=['GET', "POST"])
 def apply_ocr_for_image_url():
 
-    file_url = request.args.get("file_url")
+    file_url = request.args.get("file_url") if request.method == "GET" else request.form.get("file_url")
 
     if file_url is None:
         return render_template('cloud-vision/cloud_vision_usage.html')

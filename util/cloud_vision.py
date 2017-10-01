@@ -45,7 +45,7 @@ class OCR(object):
             return str(response.json()["responses"][0]["fullTextAnnotation"]['text'])
         except Exception as e:
             print(str(e))
-            return "ERROR"
+            return "Warning: no text detected."
 
     @staticmethod
     def base64_request_data(file_bytes):
