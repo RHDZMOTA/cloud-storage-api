@@ -41,7 +41,11 @@ class OCR(object):
     @staticmethod
     def extract_text(response):
         response.raise_for_status()
-        return str(response.json()["responses"][0]["fullTextAnnotation"]['text'])
+        try:
+            return str(response.json()["responses"][0]["fullTextAnnotation"]['text'])
+        except Exception as e:
+            print(str(e))
+            return "ERROR"
 
     @staticmethod
     def base64_request_data(file_bytes):
