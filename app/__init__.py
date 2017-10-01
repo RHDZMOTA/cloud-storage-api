@@ -15,5 +15,7 @@ db = SQLAlchemy(app)
 from app.mod_temporal_link.controllers import mod_temporal_link as temporal_link
 app.register_blueprint(temporal_link)
 
+from app.mod_upload_file.controllers import mod_upload_file as upload_file
+app.register_blueprint(upload_file)
 
 db.create_all()

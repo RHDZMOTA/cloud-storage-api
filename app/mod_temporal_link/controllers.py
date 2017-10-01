@@ -41,6 +41,3 @@ def dropbox_files():
         "metadata": str(file_metadata),
         "url": file_url
     })
-
-
-
