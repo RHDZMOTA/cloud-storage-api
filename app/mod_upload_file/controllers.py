@@ -46,6 +46,9 @@ def dropbox_upload_by_url():
     file_url = request.args.get("file_url")
     upload_file_path = request.args.get("upload_file_path")
 
+    if file_url is None:
+        return "file_url is None."
+
     file_info = util.file_operations.download_file(
         file_url=file_url,
         file_name=file_name,
@@ -54,7 +57,7 @@ def dropbox_upload_by_url():
 
     drop_box = util.DropboxHandler(config=config.DropboxConfig)
     drop_box.upload_file_contents(
-        upload_path=upload_file_path if upload_file_path else "",
+        upload_path=upload_file_path if upload_file_path is not None else "",
         upload_file_name=file_name if file_name is not None else "file",
         file_contents=file_info.get("file_contents")
     )
