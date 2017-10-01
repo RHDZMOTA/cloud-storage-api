@@ -18,4 +18,7 @@ app.register_blueprint(temporal_link)
 from app.mod_upload_file.controllers import mod_upload_file as upload_file
 app.register_blueprint(upload_file)
 
+from app.mod_cloud_vision.controllers import mod_cloud_vision as cloud_vision
+app.register_blueprint(cloud_vision)
+
 db.create_all()

@@ -80,3 +80,11 @@ class OCR(object):
 OCR.get_text_from_file("temporal/plot.png")
 OCR.get_text_from_url("https://myplotlib-api.appspot.com/function?func=x^2&start=-10&end=10")
 
+import requests
+
+r = requests.get(
+    url="http://127.0.0.1:8000/cloud-vision/google-dropbox-ocr",
+    params={
+        "file_url":"https://myplotlib-api.appspot.com/function?func=x^2&start=-10&end=10"
+    }
+)

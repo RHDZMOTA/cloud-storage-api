@@ -10,7 +10,7 @@ mod_upload_file = Blueprint('upload-file', __name__, url_prefix='/upload-file')
 @mod_upload_file.route('/', methods=['GET', 'POST'])
 def get_index():
     print("SHOW INDEX")
-    return render_template('upload_file/index.html')
+    return render_template('upload-file/index.html')
 
 
 @mod_upload_file.route('/dropbox', methods=['POST'])
@@ -21,7 +21,7 @@ def dropbox_upload():
     file_contents = request.files.get('file')
 
     if file_contents is None:
-        return render_template("upload_file/dropbox_usage.html")
+        return render_template("upload-file/dropbox_usage.html")
 
     drop_box = util.DropboxHandler(config=config.DropboxConfig)
     drop_box.upload_file_contents(
