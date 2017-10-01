@@ -5,8 +5,7 @@ import base64
 import json
 
 
-VISION_KEY = config.client_secrets_map["google"]["cloud-vision"]
-VISION_URL = "https://vision.googleapis.com/v1/images:annotate?key=" + VISION_KEY
+VISION_URL = "https://vision.googleapis.com/v1/images:annotate?key=" + config.GoogleConfig.VISION_KEY
 
 
 class OCR(object):

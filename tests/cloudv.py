@@ -81,10 +81,29 @@ OCR.get_text_from_file("temporal/plot.png")
 OCR.get_text_from_url("https://myplotlib-api.appspot.com/function?func=x^2&start=-10&end=10")
 
 import requests
+import json
+
+url1 = "https://rhdzmota-cloud-storage.herokuapp.com/cloud-vision/google-dropbox-ocr"
+url2 = "http://127.0.0.1:8000/cloud-vision/google-dropbox-ocr"
 
 r = requests.get(
-    url="http://127.0.0.1:8000/cloud-vision/google-dropbox-ocr",
+    url=url1,
     params={
         "file_url":"https://myplotlib-api.appspot.com/function?func=x^2&start=-10&end=10"
     }
 )
+
+print(r.text)
+
+
+r = requests.post(
+    url=url2,
+    headers = {"Content-Type": "application/json"},
+    data=json.dumps({
+        "file_url":"https://myplotlib-api.appspot.com/function?func=x^2&start=-10&end=10"
+    })
+)
+
+print(r.text)
+
+https://rhdzmota-cloud-storage.herokuapp.com/cloud-vision/google-dropbox-ocr?file_url=https://myplotlib-api.appspot.com/scatter?x=0,1,2,3,4,5&y=0,4,1,2,3,5

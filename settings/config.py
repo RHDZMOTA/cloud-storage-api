@@ -26,14 +26,14 @@ class Credentials:
             raise NotImplementedError("Service attribute missing.")
         return self.service
 
+    def get_field(self, field):
+        return client_secrets_map[self.get_service()].get(field)
+
     def get_user(self):
-        return client_secrets_map[self.get_service()].get("username")
+        return self.get_field("username")
 
     def get_email(self):
-        return client_secrets_map[self.get_service()].get("email")
-
-    def get_key(self):
-        return client_secrets_map[self.get_service()].get("access_key")
+        return self.get_field("email")
 
 
 # Dropbox configuration
@@ -45,6 +45,16 @@ class DropboxConfig(object):
     credentials = DropboxCredentials()
     USER = credentials.get_user()
     EMAIL = credentials.get_email()
-    KEY = credentials.get_key()
+    KEY = credentials.get_field("access_key")
 
 
+# Google configuration
+class GoogleConfig(object):
+
+    class GoogleCredentials(Credentials):
+        service = "google"
+
+    credentials = GoogleCredentials()
+    USER = credentials.get_user()
+    EMAIL = credentials.get_email()
+    VISION_KEY = credentials.get_field("cloud-vision")
