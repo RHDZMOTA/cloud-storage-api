@@ -15,5 +15,7 @@ db = SQLAlchemy(app)
 from app.mod_temporal_link.controllers import mod_temporal_link as temporal_link
 app.register_blueprint(temporal_link)
 
+from app.mod_cv.controller import mod_cv as cv
+app.register_blueprint(cv)
 
 db.create_all()

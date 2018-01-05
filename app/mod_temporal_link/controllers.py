@@ -4,7 +4,7 @@ from app import db
 from app.mod_temporal_link.models import User
 
 import util
-import settings.config as config
+import settings.config as STATIC_DIR
 
 mod_temporal_link = Blueprint('temporal-link', __name__, url_prefix='/temporal-link')
 

@@ -1,6 +1,15 @@
 import os
+from os import environ, pardir
+from os.path import join, dirname, abspath
+
 import json
 from util.client_secret import create_client_secret
+
+
+PROJECT_DIR = abspath(join(dirname(__file__), pardir))
+STATIC_DIR = join(PROJECT_DIR, 'app/static')
+
+
 
 # Load client secret dictionary
 def get_client_secret_json():

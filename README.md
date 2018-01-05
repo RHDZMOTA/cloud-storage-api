@@ -7,11 +7,11 @@ Simple API to provide an easy-access to files in Dropbox, Google Drive and One D
 Local setup:
 
 1. Create virtual environment. 
-* `virtualenv venv`
-* `source activate venv`
+* `virtualenv --python=python2.7 venv`
+* `source venv/bin/activate`
 
 2. Install requirements.
-* `pip install -r requirements.txt`
+* `pip2 install --upgrade -t lib -r requirements.txt`
 
 ## Usage
 
