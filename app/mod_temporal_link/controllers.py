@@ -43,4 +43,12 @@ def dropbox_files():
     })
 
 
-
+@mod_temporal_link.route('/dropbox-files/<files_path>', methods=['GET'])
+def dropbox_files_in_path(files_path="root"):
+    files_path = files_path if files_path != "root" else "/"
+    drop_box = util.DropboxHandler(config=config.DropboxConfig)
+    files = drop_box.files("/"+files_path)
+    return jsonify({
+        "path": files_path,
+        "files": files
+    })
